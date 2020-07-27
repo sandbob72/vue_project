@@ -1,32 +1,42 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Header/>
+    <Content/>
+    <Footer @onClock="onClock" title="Footer Test" color="blue"/>
+    <span>{{time}}</span>
   </div>
 </template>
 
-<style>
+<script>
+import Header from "@/components/layout/Header.vue"
+import Content from "@/components/layout/Content.vue"
+import Footer from "@/components/layout/Footer.vue"
+export default {
+  name: "app",
+  methods:{
+    onClock(value){
+      this.time = value
+    }
+  },
+  data() {
+    return{
+      time:""
+    }
+  },
+  components:{
+    Header,
+    Content,
+    Footer
+  }
+}
+</script>
+
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
